@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Votación por Sección</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #eef2f3; }
+        .card { background: white; padding: 20px; max-width: 400px; margin: auto; border-radius: 8px; }
+        button { background: #27ae60; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Votación por Sección</h2>
+        <label for="seccion">Selecciona tu sección:</label><br><br>
+        <select id="seccion">
+            <option value="norte">Norte</option>
+            <option value="sur">Sur</option>
+            <option value="centro">Centro</option>
+        </select><br>
+        <button onclick="emitirVoto()">Emitir Voto</button>
+
+        <h3>Resultados:</h3>
+        <p>Norte: <span id="votosNorte">0</span></p>
+        <p>Sur: <span id="votosSur">0</span></p>
+        <p>Centro: <span id="votosCentro">0</span></p>
+        <a href="index.html">Regresar al Índice</a>
+    </div>
+
+    <script>
+        let norte = 0, sur = 0, centro = 0;
+
+        function emitirVoto() {
+            let opcion = document.getElementById("seccion").value;
+            switch(opcion) {
+                case "norte":
+                    norte++;
+                    document.getElementById("votosNorte").textContent = norte;
+                    break;
+                case "sur":
+                    sur++;
+                    document.getElementById("votosSur").textContent = sur;
+                    break;
+                case "centro":
+                    centro++;
+                    document.getElementById("votosCentro").textContent = centro;
+                    break;
+            }
+            alert("¡Voto registrado en la sección " + opcion.toUpperCase() + "!");
+        }
+    </script>
+</body>
+</html>

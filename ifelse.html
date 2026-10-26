@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios If-Else</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #eef2f3; }
+        .card { background: white; padding: 15px; margin: 15px auto; max-width: 500px; border-radius: 8px; }
+        button { background: #8e44ad; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Tres números de mayor a menor -->
+    <div class="card">
+        <h3>1. Ordenar 3 Números (Mayor a Menor)</h3>
+        <button onclick="ordenarNumeros()">Procesar</button>
+        <p id="resOrden"></p>
+    </div>
+
+    <!-- 2. Importe bruto y neto -->
+    <div class="card">
+        <h3>2. Importe Bruto y Neto</h3>
+        <button onclick="calcularImporte()">Calcular Neto</button>
+        <p id="resImporte"></p>
+    </div>
+
+    <!-- 3. Sueldo por antigüedad -->
+    <div class="card">
+        <h3>3. Sueldo según Antigüedad (Base: 40,000 €)</h3>
+        <button onclick="calcularSueldo()">Calcular Sueldo</button>
+        <p id="resSueldo"></p>
+    </div>
+
+    <p style="text-align: center;"><a href="index.html">Regresar al Índice</a></p>
+
+    <script>
+        // 1. Mayor a menor
+        function ordenarNumeros() {
+            let n1 = parseFloat(prompt("Ingresa el primer número:"));
+            let n2 = parseFloat(prompt("Ingresa el segundo número:"));
+            let n3 = parseFloat(prompt("Ingresa el tercer número:"));
+
+            let arr = [n1, n2, n3];
+            arr.sort(function(a, b){ return b - a; });
+
+            document.getElementById("resOrden").textContent = "Ordenados: " + arr.join(", ");
+        }
+
+        // 2. Importe
+        function calcularImporte() {
+            let bruto = parseFloat(prompt("Ingresa el importe bruto:"));
+            let neto = 0;
+
+            if (bruto > 15000) {
+                neto = bruto - (bruto * 0.16);
+            } else {
+                neto = bruto - (bruto * 0.10);
+            }
+
+            document.getElementById("resImporte").textContent = "Importe Neto: €" + neto.toFixed(2);
+        }
+
+        // 3. Sueldo
+        function calcularSueldo() {
+            let anios = parseFloat(prompt("Ingresa los años de antigüedad:"));
+            let base = 40000;
+            let aumento = 0;
+
+            if (anios > 10) {
+                aumento = 0.10;
+            } else if (anios > 5) {
+                aumento = 0.07;
+            } else if (anios > 3) {
+                aumento = 0.05;
+            } else {
+                aumento = 0.03;
+            }
+
+            let total = base + (base * aumento);
+            document.getElementById("resSueldo").textContent = "Sueldo Final: €" + total.toFixed(2) + " (Aumento del " + (aumento*100) + "%)";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ciclos While y For</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #eef2f3; }
+        .card { background: white; padding: 15px; margin: 15px auto; max-width: 500px; border-radius: 8px; }
+        button { background: #d35400; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Suma de impares del 1 al 100 -->
+    <div class="card">
+        <h3>1. Suma de impares (1 al 100)</h3>
+        <button onclick="sumarImpares()">Calcular Suma</button>
+        <p id="resImpares"></p>
+    </div>
+
+    <!-- 2. Mostrar asteriscos -->
+    <div class="card">
+        <h3>2. Mostrar Asteriscos</h3>
+        <button onclick="mostrarAsteriscos()">Generar</button>
+        <p id="resAsteriscos"></p>
+    </div>
+
+    <!-- 3. Tablas de multiplicar del 1 al 10 -->
+    <div class="card">
+        <h3>3. Tablas de Multiplicar (1 al 10)</h3>
+        <button onclick="mostrarTablas()">Generar Tablas</button>
+        <pre id="resTablas"></pre>
+    </div>
+
+    <p style="text-align: center;"><a href="index.html">Regresar al Índice</a></p>
+
+    <script>
+        // 1. Suma impares
+        function sumarImpares() {
+            let suma = 0;
+            for (let i = 1; i <= 100; i++) {
+                if (i % 2 !== 0) {
+                    suma += i;
+                }
+            }
+            document.getElementById("resImpares").textContent = "La suma de impares es: " + suma;
+        }
+
+        // 2. Asteriscos
+        function mostrarAsteriscos() {
+            let num = parseInt(prompt("¿Cuántos asteriscos deseas ver?"));
+            let texto = "";
+            for (let i = 0; i < num; i++) {
+                texto += "* ";
+            }
+            document.getElementById("resAsteriscos").textContent = texto;
+        }
+
+        // 3. Tablas
+        function mostrarTablas() {
+            let salida = "";
+            for (let i = 1; i <= 10; i++) {
+                salida += "--- Tabla del " + i + " ---\n";
+                for (let j = 1; j <= 10; j++) {
+                    salida += i + " x " + j + " = " + (i * j) + "\n";
+                }
+                salida += "\n";
+            }
+            document.getElementById("resTablas").textContent = salida;
+        }
+    </script>
+</body>
+</html>

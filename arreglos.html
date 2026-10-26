@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Operaciones con Arreglos</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #eef2f3; }
+        .card { background: white; padding: 20px; max-width: 600px; margin: auto; border-radius: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
+        button { background: #16a085; color: white; border: none; padding: 8px; cursor: pointer; border-radius: 4px; }
+        .estado { background: #f0f0f0; padding: 10px; font-weight: bold; margin-top: 10px; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Operaciones con Arreglos (10 Países)</h2>
+        <div class="estado" id="vistaArreglo"></div>
+
+        <div class="grid">
+            <button onclick="ejecutarPop()">Pop()</button>
+            <button onclick="ejecutarShift()">Shift()</button>
+            <button onclick="ejecutarPush()">Push()</button>
+            <button onclick="ejecutarUnshift()">Unshift()</button>
+            <button onclick="ejecutarSplice()">Splice()</button>
+            <button onclick="ejecutarDelete()">Delete</button>
+            <button onclick="ejecutarReverse()">Reverse()</button>
+            <button onclick="ejecutarSort()">Sort()</button>
+            <button onclick="ejecutarConcat()">Concat()</button>
+            <button onclick="ejecutarJoin()">Join()</button>
+            <button onclick="ejecutarLength()">Length</button>
+        </div>
+
+        <br>
+        <a href="index.html">Regresar al Índice</a>
+    </div>
+
+    <script>
+        let paises = ["México", "España", "Japón", "Canadá", "Brasil", "Alemania", "Francia", "Italia", "Chile", "Perú"];
+
+        function actualizar() {
+            document.getElementById("vistaArreglo").textContent = "Arreglo actual: [" + paises.join(", ") + "]";
+        }
+        actualizar();
+
+        function ejecutarPop() { paises.pop(); actualizar(); }
+        function ejecutarShift() { paises.shift(); actualizar(); }
+        function ejecutarPush() { 
+            let p = prompt("Nombre del país a agregar:");
+            if(p) paises.push(p); 
+            actualizar(); 
+        }
+        function ejecutarUnshift() { 
+            let p = prompt("Nombre del país al inicio:");
+            if(p) paises.unshift(p); 
+            actualizar(); 
+        }
+        function ejecutarSplice() { 
+            paises.splice(1, 1, "NuevoPaís"); 
+            actualizar(); 
+        }
+        function ejecutarDelete() { 
+            delete paises[0]; 
+            actualizar(); 
+        }
+        function ejecutarReverse() { paises.reverse(); actualizar(); }
+        function ejecutarSort() { paises.sort(); actualizar(); }
+        function ejecutarConcat() { 
+            let masPaises = ["Argentina", "Colombia"];
+            let nuevo = paises.concat(masPaises);
+            alert("Resultado Concat: " + nuevo.join(", "));
+        }
+        function ejecutarJoin() { 
+            alert("Join con '-': " + paises.join(" - "));
+        }
+        function ejecutarLength() { 
+            alert("Longitud del arreglo: " + paises.length);
+        }
+    </script>
+</body>
+</html>
